@@ -8,8 +8,24 @@
 import SwiftUI
 
 struct Home: View {
+    @EnvironmentObject var sesionToken:PViewModel
+    @ObservedObject var login = PViewModel()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        ZStack{
+            VStack{
+                NavigationStack{
+                    Text("Bienvenido").bold().font(.headline)
+                        .navigationTitle("A-NotebookUI")
+                    Button(action:{
+                        sesionToken.auth = 0
+                    }){
+                        Text("cerrar sesion")
+                    }
+                }
+            }
+
+        }  
     }
 }
 

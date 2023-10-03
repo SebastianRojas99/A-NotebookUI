@@ -8,17 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var login:PViewModel
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        
+        Group{
+            if login.auth == 0{
+                Login()
+            }else if login.auth == 1{
+                Home()
+            }else if login.auth == 2 {
+                VStack{
+                    Text("usuario y/o cont incorrecto")
+                    Button(action:{
+                        login.auth = 0
+                    }){
+                        Text("Reintentar")
+                    }
+                }
+            }
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+  //  ContentView()
+//}

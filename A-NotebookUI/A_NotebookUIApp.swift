@@ -10,8 +10,9 @@ import SwiftUI
 @main
 struct A_NotebookUIApp: App {
     var body: some Scene {
+        let login = PViewModel()
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(login)//para propagar el login
         }
     }
 }
